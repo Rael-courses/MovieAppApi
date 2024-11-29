@@ -7,4 +7,5 @@ namespace MovieAppApi.Src.Core.Repositories.Playlist;
 public interface IPlaylistRepository
 {
   public Task<PlaylistModel> CreatePlaylistAsync(CreatePlaylistRequestBodyModel playlistData);
+  public Task<List<PlaylistModel>> GetPlaylistsAsync();
 }

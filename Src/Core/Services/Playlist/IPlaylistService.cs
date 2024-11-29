@@ -6,4 +6,5 @@ namespace MovieAppApi.Src.Core.Services.Playlist;
 public interface IPlaylistService
 {
   public Task<PlaylistModel> CreatePlaylistAsync(CreatePlaylistRequestBodyModel playlistData);
+  public Task<List<PlaylistModel>> GetPlaylistsAsync();
 }

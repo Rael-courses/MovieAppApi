@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using MovieAppApi.Src.Core.Repositories.Entities;
 using MovieAppApi.Src.Models.CreatePlaylist;
 using MovieAppApi.Src.Models.Playlist;
@@ -13,9 +14,9 @@ public class PlaylistRepository : IPlaylistRepository
     _appDbContext = appDbContext;
   }
 
-  public async Task<PlaylistModel> CreatePlaylistAsync(CreatePlaylistRequestBodyModel playlistData)
+  public async Task<PlaylistModel> CreatePlaylistAsync(CreatePlaylistRequestBodyModel data)
   {
-    var playlistJoinMovieEntities = await Task.WhenAll(playlistData.MovieIds.Select(async movieId =>
+    var playlistJoinMovieEntities = await Task.WhenAll(data.MovieIds.Select(async movieId =>
     {
       var existingMovieEntity = await _appDbContext.Movies.FindAsync(movieId);
 
@@ -34,8 +35,8 @@ public class PlaylistRepository : IPlaylistRepository
 
     var playlistEntity = new PlaylistEntity
     {
-      Name = playlistData.Name,
-      Description = playlistData.Description,
+      Name = data.Name,
+      Description = data.Description,
       PlaylistJoinMovies = playlistJoinMovieEntities.ToList(),
       CreatedAt = DateTime.UtcNow,
       UpdatedAt = DateTime.UtcNow
@@ -51,5 +52,20 @@ public class PlaylistRepository : IPlaylistRepository
       description: playlistEntity.Description,
       movieIds: playlistEntity.PlaylistJoinMovies.Select(pm => pm.MovieId).ToList()
     );
+  }
+
+  public async Task<List<PlaylistModel>> GetPlaylistsAsync()
+  {
+    var playlistEntities = await _appDbContext.Playlists
+    .Include(p => p.PlaylistJoinMovies)
+    .ToListAsync();
+
+    return playlistEntities.Select(playlistEntity => new PlaylistModel
+    (
+      id: playlistEntity.Id,
+      name: playlistEntity.Name,
+      description: playlistEntity.Description,
+      movieIds: playlistEntity.PlaylistJoinMovies.Select(pm => pm.MovieId).ToList()
+    )).ToList();
   }
 }

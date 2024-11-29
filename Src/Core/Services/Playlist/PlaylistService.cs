@@ -17,4 +17,9 @@ public class PlaylistService : IPlaylistService
   {
     return _playlistRepository.CreatePlaylistAsync(playlist);
   }
+
+  public Task<List<PlaylistModel>> GetPlaylistsAsync()
+  {
+    return _playlistRepository.GetPlaylistsAsync();
+  }
 }
