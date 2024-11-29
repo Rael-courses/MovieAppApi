@@ -145,4 +145,18 @@ public class PlaylistRepository : IPlaylistRepository
       movieIds: playlistEntityToUpdate.PlaylistJoinMovies.Select(p => p.MovieId).ToList()
     );
   }
+
+  public async Task DeletePlaylistAsync(int playlistId)
+  {
+    var playlistEntity = await _appDbContext.Playlists.FindAsync(playlistId);
+
+    if (playlistEntity == null)
+    {
+      throw new PlaylistNotFoundException(playlistId);
+    }
+
+    _appDbContext.Playlists.Remove(playlistEntity);
+
+    await _appDbContext.SaveChangesAsync();
+  }
 }

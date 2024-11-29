@@ -10,4 +10,5 @@ public interface IPlaylistRepository
   public Task<List<PlaylistModel>> GetPlaylistsAsync();
   public Task<PlaylistModel> GetPlaylistAsync(int playlistId);
   public Task<PlaylistModel> UpdatePlaylistAsync(int playlistId, PlaylistModel playlist);
+  public Task DeletePlaylistAsync(int playlistId);
 }

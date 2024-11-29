@@ -100,4 +100,19 @@ public class PlaylistsController : BaseController<PlaylistsController>
       return NotFound($"Playlist id {playlistId} not found");
     }
   }
+
+  [HttpDelete("{playlistId}")]
+  public async Task<IActionResult> DeletePlaylist([Range(1, int.MaxValue)] int playlistId)
+  {
+    try
+    {
+      await _playlistService.DeletePlaylistAsync(playlistId);
+
+      return NoContent();
+    }
+    catch (PlaylistNotFoundException)
+    {
+      return NotFound($"Playlist id {playlistId} not found");
+    }
+  }
 }

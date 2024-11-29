@@ -32,4 +32,9 @@ public class PlaylistService : IPlaylistService
   {
     return _playlistRepository.UpdatePlaylistAsync(playlistId, playlist);
   }
+
+  public Task DeletePlaylistAsync(int playlistId)
+  {
+    return _playlistRepository.DeletePlaylistAsync(playlistId);
+  }
 }
