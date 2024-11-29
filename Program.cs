@@ -11,6 +11,7 @@ using MovieAppApi.Src.Core.Mappers.CreatePlaylist;
 using MovieAppApi.Src.Core.Services.Playlist;
 using MovieAppApi.Src.Core.Repositories.Playlist;
 using MovieAppApi.Src.Core.Mappers.GetPlaylists;
+using MovieAppApi.Src.Core.Mappers.GetPlaylist;
 
 namespace MovieAppApi;
 
@@ -34,6 +35,7 @@ public class Program
         builder.Services.AddScoped<ICreatePlaylistRequestBodyMapper, CreatePlaylistRequestBodyMapper>();
         builder.Services.AddScoped<ICreatePlaylistResponseMapper, CreatePlaylistResponseMapper>();
         builder.Services.AddScoped<IGetPlaylistsResponseMapper, GetPlaylistsResponseMapper>();
+        builder.Services.AddScoped<IGetPlaylistResponseMapper, GetPlaylistResponseMapper>();
 
         builder.Services.AddScoped<IFetchMoviesService, TmdbService>();
 

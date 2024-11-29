@@ -22,4 +22,9 @@ public class PlaylistService : IPlaylistService
   {
     return _playlistRepository.GetPlaylistsAsync();
   }
+
+  public Task<PlaylistModel> GetPlaylistAsync(int playlistId)
+  {
+    return _playlistRepository.GetPlaylistAsync(playlistId);
+  }
 }
