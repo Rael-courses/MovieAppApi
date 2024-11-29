@@ -11,4 +11,6 @@ public class PlaylistEntity : CommonEntity
   public required string Name { get; set; }
 
   public string? Description { get; set; }
+
+  public List<PlaylistJoinMovieEntity> PlaylistJoinMovies { get; set; } = [];
 }
