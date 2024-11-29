@@ -90,8 +90,18 @@ public class PlaylistRepository : IPlaylistRepository
     );
   }
 
-  public Task<PlaylistModel> UpdatePlaylistAsync(int playlistId, PlaylistModel playlist)
+  public Task<PlaylistModel> UpdatePlaylistAsync(int playlistId, PlaylistModel playlistModel)
   {
+    // retrouver l'entité playlist correspondant à l'id
+
+    // la mettre à jour (playlistEntity.Name = playlistModel.Name)
+
+    // sauvegarder les changements
+
+    // convertir l'entité en modèle
+
+    // retourner le modèle
+
     throw new NotImplementedException();
   }
 }
