@@ -27,4 +27,9 @@ public class PlaylistService : IPlaylistService
   {
     return _playlistRepository.GetPlaylistAsync(playlistId);
   }
+
+  public Task<PlaylistModel> UpdatePlaylistAsync(int playlistId, PlaylistModel playlist)
+  {
+    return _playlistRepository.UpdatePlaylistAsync(playlistId, playlist);
+  }
 }

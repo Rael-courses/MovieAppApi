@@ -89,4 +89,9 @@ public class PlaylistRepository : IPlaylistRepository
       movieIds: playlistEntity.PlaylistJoinMovies.Select(pm => pm.MovieId).ToList()
     );
   }
+
+  public Task<PlaylistModel> UpdatePlaylistAsync(int playlistId, PlaylistModel playlist)
+  {
+    throw new NotImplementedException();
+  }
 }
