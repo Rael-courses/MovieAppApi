@@ -14,7 +14,7 @@ public class MovieDto
 
   [Required] public required double popularity { get; init; }
 
-  [Required] public required DateTime release_date { get; init; }
+  public DateTime? release_date { get; init; }
 
   [Required] public required string title { get; init; }
 

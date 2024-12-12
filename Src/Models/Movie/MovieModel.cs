@@ -8,7 +8,7 @@ public class MovieModel
   public string Overview { get; }
   public double Popularity { get; }
   public string? PosterPath { get; }
-  public DateTime ReleaseDate { get; }
+  public DateTime? ReleaseDate { get; }
   public string Title { get; }
   public double VoteAverage { get; }
   public int VoteCount { get; }
@@ -19,7 +19,7 @@ public class MovieModel
     string originalTitle,
     string overview,
     double popularity,
-    DateTime releaseDate,
+    DateTime? releaseDate,
     string title,
     double voteAverage,
     int voteCount,
